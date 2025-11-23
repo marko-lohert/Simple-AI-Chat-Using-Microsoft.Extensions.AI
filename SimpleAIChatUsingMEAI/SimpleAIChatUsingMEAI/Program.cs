@@ -7,4 +7,4 @@ Console.Write("> ");
 string prompt = Console.ReadLine() ?? string.Empty;
 ChatResponse response = await chatClient.GetResponseAsync(prompt);
 
-Console.WriteLine(response.Text);
+Console.Write(response.Text);
