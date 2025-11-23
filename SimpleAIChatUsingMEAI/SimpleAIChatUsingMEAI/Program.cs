@@ -5,6 +5,7 @@ IChatClient chatClient = new OllamaApiClient("http://localhost:11434", "gemma3:4
 
 Console.Write("> ");
 string prompt = Console.ReadLine() ?? string.Empty;
-ChatResponse response = await chatClient.GetResponseAsync(prompt);
-
-Console.Write(response.Text);
+await foreach(ChatResponseUpdate responseUpdate in chatClient.GetStreamingResponseAsync(prompt))
+{
+    Console.Write(responseUpdate.Text);
+}
